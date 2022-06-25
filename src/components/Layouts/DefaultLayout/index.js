@@ -1,23 +1,23 @@
 import useDefaultLayout from '@/hooks/useDefaultLayout';
-import { Link, Outlet } from 'react-router-dom';
+import classNames from 'classnames/bind';
+import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import styles from './DefaultLayout.module.scss';
+const cx = classNames.bind(styles);
 const DefaultLayout = () => {
 	// Hidden Sidebar when it matches the following page
 	const hiddenSidebar = useDefaultLayout('/following');
 	return (
-		<>
-			<nav>
-				<Link to='/'>Home</Link> |{' '}
-				<Link to='/following'>Following</Link> |{' '}
-				<Link to='/following/me'>me</Link>
-			</nav>
+		<div className={cx('wrapper')}>
 			<Header />
-			<div className='container'>
+			<div className={cx('container')}>
 				{!hiddenSidebar && <Sidebar />}
-				<Outlet />
+				<div className={cx('content')}>
+					<Outlet />
+				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 
