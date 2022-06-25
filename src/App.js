@@ -1,9 +1,9 @@
+import { useRoutes } from 'react-router-dom';
+import { publicRoutes } from './routes';
+
 function App() {
-	return (
-		<div className='App'>
-			<h1>Hêlo</h1>
-		</div>
-	);
+	const routesPublic = useRoutes(publicRoutes);
+	return <div className='App'>{routesPublic}</div>;
 }
 
 export default App;
