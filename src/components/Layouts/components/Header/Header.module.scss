@@ -1,11 +1,101 @@
+@mixin rgba-color($alpha: 1, $property: background-color) {
+	#{$property}: rgba(22, 24, 35, $alpha);
+}
+
 .wrapper {
 	height: var(--default-layout-header-height);
 	width: 100%;
-	box-shadow: 0px 10px 1px rgb(0 0 0 / 12%);
+	box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+
+	ion-icon {
+		@include rgba-color(0.34, color);
+	}
 }
 .inner {
 	height: 100%;
+	padding: 0 24px 0px 20px;
 	width: var(--default-layout-width);
-	background-color: aquamarine;
 	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.search {
+	@include rgba-color(0.06);
+	width: 361px;
+	height: 46px;
+	display: flex;
+	align-items: center;
+	border-radius: 92px;
+	padding: 12px 16px;
+	overflow: hidden;
+	border: 1.5px solid transparent;
+	&:focus-within {
+		@include rgba-color(0.2, border-color);
+	}
+	&-form {
+		display: flex;
+		align-items: center;
+		flex: 1;
+	}
+	&-input {
+		outline: none;
+		border: none;
+		background: transparent;
+		flex: 1;
+		font-size: 1.6rem;
+		font-weight: 400;
+		line-height: 22px;
+		caret-color: var(--primary-color);
+
+		&:not(:placeholder-shown) ~ .search-button ion-icon[name='search'] {
+			@include rgba-color(0.75, color);
+		}
+	}
+
+	&-input:not(:placeholder-shown) ~ &-button ion-icon[name='search'] {
+		@include rgba-color(0.75, color);
+	}
+
+	&-clear-button {
+		display: flex;
+		align-items: center;
+
+		ion-icon {
+			margin: 0px 12px;
+			font-size: 16px;
+		}
+		ion-icon[name*='reload'] {
+			@include rgba-color(0.34, color);
+			animation: rotate360 1s linear infinite;
+		}
+
+		@keyframes rotate360 {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+	}
+	&-splitter {
+		@include rgba-color(0.12);
+		width: 1px;
+		height: 28px;
+	}
+	&-button {
+		padding: 11px 16px 11px 12px;
+		margin: -12px -16px;
+		margin-left: 0;
+		display: flex;
+		ion-icon {
+			font-size: 24px;
+		}
+
+		&:hover {
+			@include rgba-color(0.03);
+		}
+
+		&:active {
+			@include rgba-color(0.06);
+		}
+	}
 }
