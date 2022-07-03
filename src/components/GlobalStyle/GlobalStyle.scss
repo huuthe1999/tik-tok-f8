@@ -3,7 +3,7 @@
 
 :root {
 	--primary-color: #fe2c55;
-	--text-color: #161823;
+	--text-color: rgba(22, 24, 35, 1);
 	// Default layout
 	--default-layout-width: 1150px;
 	--default-layout-header-height: 60px;
@@ -18,9 +18,11 @@ html {
 	font-size: 62.5%;
 }
 body {
-	font-family: 'IBM Plex Sans', sans-serif;
+	font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC,
+		sans-serif;
 	font-size: 1.6rem;
 	line-height: 1.5;
+	color: var(--text-color);
 	text-rendering: optimizeSpeed;
 }
 button {
@@ -30,6 +32,5 @@ button {
 	background: transparent;
 }
 a[href] {
-	color: var(--text-color);
 	text-decoration: none;
 }
