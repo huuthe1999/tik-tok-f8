@@ -1,14 +1,18 @@
-.sug-item {
+.wrapper {
 	padding: 9px 16px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 
+	&:hover {
+		background-color: rgba(22, 24, 35, 0.03);
+	}
 	&-icon {
 		margin-right: 8px;
 		display: flex;
 		align-items: center;
-		font-size: 15px;
+		font-size: 1.5rem;
 		height: 20px;
 		flex-basis: 20px;
 		justify-content: center;
@@ -23,11 +27,24 @@
 		flex: 1;
 		& > h4 {
 			font-weight: 600;
-			font-size: 16px;
+			// font-size: 1.6rem;
 			line-height: 22px;
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			overflow: hidden;
+		}
+	}
+
+	// Menu items
+
+	&-menu {
+		padding: 10px 16px;
+	}
+
+	&-icon-menu {
+		& > ion-icon {
+			width: 20px;
+			height: 20px;
 		}
 	}
 }

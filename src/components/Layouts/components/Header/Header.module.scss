@@ -35,7 +35,7 @@ $width-search: 361px;
 		display: flex;
 		align-items: center;
 		flex: 1;
-		font-size: 14px;
+		font-size: 1.4rem;
 		@include rgba-color(1, color);
 
 		ion-icon {
@@ -50,7 +50,7 @@ $width-search: 361px;
 		font-size: 1.6rem;
 		font-weight: 400;
 		line-height: 22px;
-		caret-color: var(--primary-color);
+		caret-color: var(--color-primary);
 		color: inherit;
 
 		&:not(:placeholder-shown) ~ .search-button ion-icon[name='search'] {
@@ -68,7 +68,7 @@ $width-search: 361px;
 
 		ion-icon {
 			margin: 0px 12px;
-			font-size: 16px;
+			font-size: 1.6rem;
 		}
 		ion-icon[name*='reload'] {
 			@include rgba-color(0.34, color);
@@ -107,21 +107,40 @@ $width-search: 361px;
 	&-sug {
 		width: $width-search;
 
+		&-titleAcc {
+			height: 30px;
+			padding: 5px 12px;
+			font-size: 1.4rem;
+			line-height: 20px;
+			font-weight: 600;
+			color: rgba(22, 24, 35, 0.5);
+		}
 		&-more {
 			padding: 15px 16px;
 			display: flex;
-			justify-content: center;
 			align-items: center;
 			cursor: pointer;
 
 			& > p {
 				font-weight: 600;
-				font-size: 16px;
+				// font-size: 1.6rem;
 				line-height: 22px;
 				white-space: nowrap;
 				text-overflow: ellipsis;
 				overflow: hidden;
 			}
 		}
+	}
+}
+
+.action {
+	display: flex;
+	align-items: center;
+	&-icon-more {
+		font-size: 2rem;
+		margin-left: 16px;
+		color: currentColor;
+		cursor: pointer;
+		padding: 4px 8px;
 	}
 }

@@ -1,0 +1,81 @@
+@mixin rgba-color($alpha: 1, $property: background-color, $priority: false) {
+	@if ($priority == true) {
+		#{$property}: rgba(22, 24, 35, $alpha) !important;
+	} @else {
+		#{$property}: rgba(22, 24, 35, $alpha);
+	}
+}
+
+.wrapper {
+	font-size: 1.6rem;
+	line-height: 22px;
+	font-weight: 700;
+	min-width: 100px;
+	padding: 6px 8px;
+	min-height: 36px;
+	border-radius: 4px;
+	background-color: transparent;
+	border: 1px solid transparent;
+
+	+ .wrapper {
+		margin-left: 16px;
+	}
+
+	ion-icon {
+		font-size: 2rem;
+		margin-right: 8px;
+	}
+}
+.rounded {
+	border-radius: 52px !important;
+	box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+	border-color: rgba(22, 24, 35, 0.12);
+	&:hover {
+		border-color: rgba(22, 24, 35, 0.2);
+		background-color: rgba(22, 24, 35, 0.03);
+	}
+}
+
+// .outline {
+// 	background-color: transparent !important;
+// 	@include rgba-color(0.06, border-color);
+
+// 	&:hover {
+// 		@include rgba-color(0.03, background-color, true);
+// 	}
+// }
+//Type
+.primary {
+	color: var(--color-white);
+	background-color: var(--color-primary);
+	border-color: var(--color-primary);
+
+	&:hover {
+		border-color: var(--color-primary);
+		background: linear-gradient(
+				0deg,
+				rgba(0, 0, 0, 0.06),
+				rgba(0, 0, 0, 0.06)
+			),
+			#fe2c55;
+	}
+}
+
+.secondary {
+	color: var(--color-white);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 88px;
+	border-radius: 2px;
+	padding: 0 16px;
+	border-width: 1px;
+	border-style: solid;
+	@include rgba-color(0.12, border-color);
+
+	&:hover {
+		@include rgba-color(0.03);
+	}
+}
+
+// Size

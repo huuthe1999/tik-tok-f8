@@ -1,15 +1,17 @@
 import { LogoIcon } from '@/assets/icons';
-import { AccountList } from '@/components/Account';
-import { Wrapper as PopperWrapper } from '@/components/Popper';
-import SuggestItem from '@/components/SuggestItem';
+import { AccountItem } from '@/components/Account';
+import Button from '@/components/Button';
+import { DropdownItem as SuggestItem } from '@/components/DropdownItem';
+import {
+	Menu as PopperMenu,
+	Wrapper as PopperWrapper,
+} from '@/components/Popper';
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
-
 const cx = classNames.bind(styles);
-const TEST = 'test';
 const Header = () => {
 	const [visible, setVisible] = useState(false);
 	const show = () => setVisible(true);
@@ -36,11 +38,24 @@ const Header = () => {
 								{Array(8)
 									.fill(null)
 									.map((_, i) => (
-										<SuggestItem key={i} />
+										<SuggestItem
+											key={i}
+											icon='search'
+											content={`Datvila9${i}`}
+										/>
 									))}
-								<AccountList />
+								<p
+									onClick={hide}
+									className={cx('search-sug-titleAcc')}>
+									Tài khoản
+								</p>
+								{Array(5)
+									.fill(null)
+									.map((_, i) => (
+										<AccountItem key={i} />
+									))}
 								<div className={cx('search-sug-more')}>
-									<p>Xem tất cả kết quả dành cho "{TEST}"</p>
+									<p>Xem tất cả kết quả dành cho "{11111}"</p>
 								</div>
 							</PopperWrapper>
 						</div>
@@ -67,7 +82,17 @@ const Header = () => {
 						</form>
 					</div>
 				</Tippy>
-				<div className={cx('action')}></div>
+				<div className={cx('action')}>
+					<Button to='/upload' secondary icon='add-outline'>
+						Tải lên
+					</Button>
+					<Button primary>Đăng nhập</Button>
+					<PopperMenu>
+						<ion-icon
+							class={cx('action-icon-more')}
+							name='ellipsis-vertical'></ion-icon>
+					</PopperMenu>
+				</div>
 			</div>
 		</header>
 	);
