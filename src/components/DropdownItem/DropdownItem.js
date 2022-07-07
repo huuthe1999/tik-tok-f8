@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Dropdown.module.scss';
 const cx = classNames.bind(styles);
@@ -7,11 +8,16 @@ const DropdownItem = ({
 	href,
 	content,
 	to,
-	isMenuItem,
+	className,
+	isMenuItem = false,
+	isMenuHeader = false,
+	onBack,
+	onClick,
 	...restProps
 }) => {
 	let Component = 'div';
 	const props = {
+		onClick,
 		...restProps,
 	};
 	if (to) {
@@ -21,22 +27,44 @@ const DropdownItem = ({
 		props.href = href;
 		Component = 'a';
 	}
+
+	const [headerHeight, setHeaderHeight] = useState(null);
+	const headerRef = useRef(null);
+
+	useEffect(() => {
+		setHeaderHeight(headerRef.current?.firstChild.offsetHeight);
+	}, []);
+
 	return (
 		<Component
+			onClick={onClick}
+			style={{ height: isMenuHeader ? headerHeight : null }}
 			className={cx('wrapper', {
 				'wrapper-menu': isMenuItem,
+				'wrapper-header': isMenuHeader,
+				[className]: className,
 			})}
 			{...props}>
-			{icon && (
+			{icon || isMenuHeader ? (
 				<div
 					className={cx('wrapper-icon', {
-						'wrapper-icon-menu': isMenuItem,
+						'wrapper-menu-icon': isMenuItem,
 					})}>
-					<ion-icon name={icon}></ion-icon>
+					{icon ? (
+						<ion-icon name={icon}></ion-icon>
+					) : (
+						<ion-icon
+							onClick={onBack}
+							name='chevron-back-outline'></ion-icon>
+					)}
 				</div>
-			)}
+			) : null}
 
-			<div className={cx('wrapper-content')}>
+			<div
+				ref={headerRef}
+				className={cx('wrapper-content', {
+					'wrapper-header-content': isMenuHeader,
+				})}>
 				<h4>{content}</h4>
 			</div>
 		</Component>

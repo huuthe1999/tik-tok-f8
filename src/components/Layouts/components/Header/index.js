@@ -83,15 +83,43 @@ const Header = () => {
 					</div>
 				</Tippy>
 				<div className={cx('action')}>
-					<Button to='/upload' secondary icon='add-outline'>
-						Tải lên
-					</Button>
-					<Button primary>Đăng nhập</Button>
-					<PopperMenu>
-						<ion-icon
-							class={cx('action-icon-more')}
-							name='ellipsis-vertical'></ion-icon>
-					</PopperMenu>
+					{true ? (
+						<>
+							<Button
+								to='/upload'
+								secondary
+								icon='cloud-upload-outline'>
+								Tải lên
+							</Button>
+							<Button
+								to='/messages'
+								iconBtn
+								icon='paper-plane-outline'></Button>
+							<Button
+								iconBtn
+								icon='chatbox-ellipses-outline'></Button>
+							<PopperMenu>
+								<Button
+									iconBtn
+									className={cx('avatar')}></Button>
+							</PopperMenu>
+						</>
+					) : (
+						<>
+							<Button
+								to='/upload'
+								secondary
+								icon='cloud-upload-outline'>
+								Tải lên
+							</Button>
+							<Button primary>Đăng nhập</Button>
+							<PopperMenu>
+								<ion-icon
+									class={cx('action-icon-more')}
+									name='ellipsis-vertical'></ion-icon>
+							</PopperMenu>
+						</>
+					)}
 				</div>
 			</div>
 		</header>

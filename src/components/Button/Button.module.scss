@@ -8,7 +8,7 @@
 
 .wrapper {
 	font-size: 1.6rem;
-	line-height: 22px;
+	line-height: 20px;
 	font-weight: 700;
 	min-width: 100px;
 	padding: 6px 8px;
@@ -25,25 +25,12 @@
 		font-size: 2rem;
 		margin-right: 8px;
 	}
-}
-.rounded {
-	border-radius: 52px !important;
-	box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
-	border-color: rgba(22, 24, 35, 0.12);
-	&:hover {
-		border-color: rgba(22, 24, 35, 0.2);
-		background-color: rgba(22, 24, 35, 0.03);
+
+	&.avatar {
+		margin-left: 24px;
 	}
 }
 
-// .outline {
-// 	background-color: transparent !important;
-// 	@include rgba-color(0.06, border-color);
-
-// 	&:hover {
-// 		@include rgba-color(0.03, background-color, true);
-// 	}
-// }
 //Type
 .primary {
 	color: var(--color-white);
@@ -77,5 +64,39 @@
 		@include rgba-color(0.03);
 	}
 }
+
+.rounded {
+	border-radius: 52px;
+	box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+	border-color: rgba(22, 24, 35, 0.12);
+	&:hover {
+		border-color: rgba(22, 24, 35, 0.2);
+		background-color: rgba(22, 24, 35, 0.03);
+	}
+}
+
+.iconBtn {
+	border: none;
+	display: flex;
+	align-items: center;
+	min-width: 32px;
+	padding: 0 3px;
+	min-height: 32px;
+
+	& > ion-icon {
+		width: 26px;
+		height: 26px;
+		margin: 0;
+	}
+}
+
+// .outline {
+// 	background-color: transparent !important;
+// 	@include rgba-color(0.06, border-color);
+
+// 	&:hover {
+// 		@include rgba-color(0.03, background-color, true);
+// 	}
+// }
 
 // Size

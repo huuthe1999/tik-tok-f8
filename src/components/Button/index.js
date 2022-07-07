@@ -11,8 +11,10 @@ const Button = ({
 	icon,
 	outline,
 	rounded,
+	iconBtn,
 	onClick,
 	children,
+	className,
 	...restProps
 }) => {
 	let Component = 'button';
@@ -21,6 +23,8 @@ const Button = ({
 		secondary,
 		outline,
 		rounded,
+		iconBtn,
+		[className]: className,
 	});
 	const props = {
 		onClick,
@@ -32,11 +36,14 @@ const Button = ({
 	} else if (href) {
 		props.href = href;
 		Component = 'a';
+	} else if (iconBtn && !icon) {
+		delete props.onClick;
+		Component = 'div';
 	}
 	return (
 		<Component className={styles} {...props}>
 			{icon && <ion-icon name={icon}></ion-icon>}
-			<span>{children}</span>
+			{!iconBtn && <span>{children}</span>}
 		</Component>
 	);
 };

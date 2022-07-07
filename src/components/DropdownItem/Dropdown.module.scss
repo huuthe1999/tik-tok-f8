@@ -1,4 +1,6 @@
 .wrapper {
+	$p: &;
+
 	padding: 9px 16px;
 	display: flex;
 	justify-content: center;
@@ -16,6 +18,8 @@
 		height: 20px;
 		flex-basis: 20px;
 		justify-content: center;
+		z-index: 1;
+
 		& > ion-icon {
 			width: 1em;
 			height: 1em;
@@ -25,13 +29,14 @@
 
 	&-content {
 		flex: 1;
+
 		& > h4 {
 			font-weight: 600;
 			// font-size: 1.6rem;
 			line-height: 22px;
-			white-space: nowrap;
-			text-overflow: ellipsis;
-			overflow: hidden;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
 		}
 	}
 
@@ -39,12 +44,53 @@
 
 	&-menu {
 		padding: 10px 16px;
-	}
 
-	&-icon-menu {
-		& > ion-icon {
+		&-icon > ion-icon {
 			width: 20px;
 			height: 20px;
+		}
+	}
+
+	// Menu header
+
+	&-header {
+		position: relative;
+		min-height: 50px;
+		display: flex;
+		align-items: center;
+		// padding: 14px 16px;
+		padding: 0;
+		// overflow: hidden;
+		&:hover {
+			background-color: initial;
+		}
+
+		#{$p}-icon {
+			margin-right: auto;
+			& > ion-icon {
+				margin-left: 20px;
+				width: 20px;
+				height: 20px;
+			}
+		}
+		&-content {
+			position: absolute;
+			max-width: 100%;
+			width: 100%;
+			height: fit-content;
+
+			& > h4 {
+				margin-left: auto;
+				max-width: calc(100% - 48px);
+				height: 100%;
+				display: flex;
+				align-items: center;
+			}
+		}
+
+		& ~ * {
+			font-size: 1.4rem;
+			padding: 10px 24px;
 		}
 	}
 }
