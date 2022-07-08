@@ -6,10 +6,13 @@ import {
 	Menu as PopperMenu,
 	Wrapper as PopperWrapper,
 } from '@/components/Popper';
-import Tippy from '@tippyjs/react/headless';
+import TippySingleTon from '@/components/Popper/TippySingleTon';
+import Tippy from '@tippyjs/react';
+import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import 'tippy.js/dist/tippy.css';
 import styles from './Header.module.scss';
 const cx = classNames.bind(styles);
 const Header = () => {
@@ -19,13 +22,14 @@ const Header = () => {
 	const handlerSubmit = e => {
 		e.preventDefault();
 	};
+	const isAuth = true;
 	return (
 		<header className={cx('wrapper')}>
 			<div className={cx('inner')}>
 				<Link to='/'>
 					<LogoIcon />
 				</Link>
-				<Tippy
+				<HeadlessTippy
 					interactive
 					visible={visible}
 					onClickOutside={hide}
@@ -81,9 +85,9 @@ const Header = () => {
 							</button>
 						</form>
 					</div>
-				</Tippy>
+				</HeadlessTippy>
 				<div className={cx('action')}>
-					{true ? (
+					{isAuth ? (
 						<>
 							<Button
 								to='/upload'
@@ -91,17 +95,27 @@ const Header = () => {
 								icon='cloud-upload-outline'>
 								Tải lên
 							</Button>
-							<Button
-								to='/messages'
-								iconBtn
-								icon='paper-plane-outline'></Button>
-							<Button
-								iconBtn
-								icon='chatbox-ellipses-outline'></Button>
-							<PopperMenu>
+							<TippySingleTon>
+								<Tippy placement='bottom' content='Tin nhắn'>
+									<Button
+										to='/messages'
+										iconBtn
+										icon='paper-plane-outline'></Button>
+								</Tippy>
+								<Tippy placement='bottom' content='Hộp thư'>
+									<Button
+										iconBtn
+										icon='chatbox-ellipses-outline'></Button>
+								</Tippy>
+							</TippySingleTon>
+							<PopperMenu isAuth>
 								<Button
 									iconBtn
-									className={cx('avatar')}></Button>
+									className={cx('avatar')}
+									style={{
+										padding: 0,
+										backgroundImage: `url('https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/18eaa1f277e928c408626da7fdc38fc2~c5_100x100.jpeg?x-expires=1657418400&x-signature=sSmYpK6izqvW4Y4XHlCr8vvE5%2Bs%3D')`,
+									}}></Button>
 							</PopperMenu>
 						</>
 					) : (

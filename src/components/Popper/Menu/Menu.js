@@ -36,21 +36,38 @@ const MENUS = [
 	{ icon: 'keypad', content: 'Phím tắt trên bàn phím' },
 ];
 
+const AuthMenus = [
+	{ icon: 'person-outline', content: 'Xem hồ sơ', to: '/profile' },
+	{ icon: 'logo-tiktok', content: 'Nhận xu', to: '/coin' },
+	{ icon: 'settings-outline', content: 'Cài đặt', to: '/setting' },
+	...MENUS,
+	{ icon: 'log-out-outline', content: 'Đăng xuất', to: '/logout' },
+];
 // Menu consist of components like : Button, Icon, Component, ....
-const Menu = ({ children }) => {
-	const [menuList, setMenuList] = useState([{ data: MENUS }]);
+const Menu = ({ children, isAuth }) => {
+	const [menuList, setMenuList] = useState([
+		{ data: isAuth ? AuthMenus : MENUS },
+	]);
 
 	const currentMenu = menuList[menuList.length - 1];
-
+	const handleChange = () => {
+		console.log('handleChange');
+	};
 	return (
 		<Tippy
 			interactive
 			placement='bottom-end'
 			delay={[0, 400]}
+			offset={[12, 8]}
 			trigger='mouseenter click focus'
 			onHide={() => setMenuList(prev => prev.slice(0, 1))}
 			render={attrs => (
-				<div className={cx('wrapper')} tabIndex={-1} {...attrs}>
+				<div
+					className={cx('wrapper', {
+						'log-out': isAuth,
+					})}
+					tabIndex={-1}
+					{...attrs}>
 					{menuList.length > 1 && (
 						<DropdownItem
 							isMenuHeader
@@ -75,7 +92,7 @@ const Menu = ({ children }) => {
 											item.children,
 										]);
 									} else {
-										console.log('onClick', item);
+										handleChange();
 									}
 								}}
 								{...item}

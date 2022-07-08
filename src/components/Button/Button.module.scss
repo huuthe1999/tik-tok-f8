@@ -9,7 +9,7 @@
 .wrapper {
 	font-size: 1.6rem;
 	line-height: 20px;
-	font-weight: 700;
+	font-weight: 600;
 	min-width: 100px;
 	padding: 6px 8px;
 	min-height: 36px;
@@ -28,6 +28,13 @@
 
 	&.avatar {
 		margin-left: 24px;
+		border-radius: 50%;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		cursor: pointer;
+		width: 32px;
+		height: 32px;
 	}
 }
 

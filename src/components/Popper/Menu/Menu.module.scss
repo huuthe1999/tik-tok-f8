@@ -17,4 +17,8 @@
 	// 	height: 4px;
 	// 	background-color: var(--color-primary);
 	// }
+
+	&.log-out > *:last-child {
+		border-top: 1px solid rgba(22, 24, 35, 0.12);
+	}
 }
