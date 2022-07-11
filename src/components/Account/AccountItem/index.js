@@ -1,23 +1,28 @@
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import styles from './AccountItem.module.scss';
 const cx = classNames.bind(styles);
 
-const AccountItem = () => {
+const AccountItem = ({ user }) => {
 	return (
-		<div className={cx('wrapper')}>
+		<Link to={`/@${user.nickname}`} className={cx('wrapper')}>
 			<span className={cx('avatar')}>
 				<img
-					src='https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/3fda2cca3e9257c62e6fb3b8e9710184~c5_300x300.webp?x-expires=1656990000&x-signature=kgDvAi8GwJ%2BD8FLz%2BmqDSC1bvZ4%3D'
-					alt='img'
+					src={
+						user.avatar ||
+						'https://i.picsum.photos/id/124/3504/2336.jpg?hmac=B1Avp6or9Df8vpnN4kQsGNfD66j8hH3gLtootCoTw4M'
+					}
+					alt={user.full_name}
 				/>
 			</span>
 			<div className={cx('content')}>
 				<h4>
-					Datvila94 <ion-icon name='checkmark-circle'></ion-icon>
+					{user.full_name}
+					{user.tick && <ion-icon name='checkmark-circle'></ion-icon>}
 				</h4>
-				<p>🔥Đạt Villa🔥</p>
+				<p>{user.nickname}</p>
 			</div>
-		</div>
+		</Link>
 	);
 };
 

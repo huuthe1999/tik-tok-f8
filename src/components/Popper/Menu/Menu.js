@@ -37,7 +37,7 @@ const MENUS = [
 ];
 
 const AuthMenus = [
-	{ icon: 'person-outline', content: 'Xem hồ sơ', to: '/profile' },
+	{ icon: 'person-outline', content: 'Xem hồ sơ', to: '/@hoaa' },
 	{ icon: 'logo-tiktok', content: 'Nhận xu', to: '/coin' },
 	{ icon: 'settings-outline', content: 'Cài đặt', to: '/setting' },
 	...MENUS,

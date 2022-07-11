@@ -3,7 +3,6 @@
 
 	padding: 9px 16px;
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	cursor: pointer;
 
@@ -32,7 +31,8 @@
 
 		& > h4 {
 			font-weight: 600;
-			// font-size: 1.6rem;
+			position: relative;
+			top: 2px;
 			line-height: 22px;
 			display: -webkit-box;
 			-webkit-box-orient: vertical;

@@ -14,6 +14,7 @@ const Button = (
 		outline,
 		rounded,
 		iconBtn,
+		badge,
 		onClick,
 		children,
 		className,
@@ -47,6 +48,7 @@ const Button = (
 		<Component className={styles} ref={ref} {...props}>
 			{icon && <ion-icon name={icon}></ion-icon>}
 			{!iconBtn && <span>{children}</span>}
+			{badge && <sup className={cx('badge')}>{badge}</sup>}
 		</Component>
 	);
 };
