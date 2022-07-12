@@ -1,6 +1,9 @@
 import { AccountItem } from '@/components/Account';
 import { DropdownItem as SuggestItem } from '@/components/DropdownItem';
 import { Wrapper as PopperWrapper } from '@/components/Popper';
+import { useDebounce } from '@/hooks';
+
+import * as searchService from '@/services/api/searchService';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
@@ -13,25 +16,27 @@ const Search = () => {
 	const [visibleResult, setVisibleResult] = useState(true);
 	const [loading, setLoading] = useState(false);
 
+	const debounceValue = useDebounce(searchValue, 500);
 	const inputRef = useRef();
 	useEffect(() => {
-		if (!searchValue) {
+		if (!debounceValue.trim()) {
 			setSearchResult([]);
 			return;
 		}
-		setLoading(true);
-		fetch(
-			`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-				searchValue.trim(),
-			)}&type=less`,
-		)
-			.then(res => res.json())
-			.then(res => {
-				setSearchResult(res.data);
+
+		const fetchApi = async () => {
+			setLoading(true);
+			try {
+				const res = await searchService.get(debounceValue);
+				setSearchResult(res);
 				setLoading(false);
-			})
-			.catch(() => setLoading(false));
-	}, [searchValue]);
+			} catch (error) {
+				console.log(error);
+				setLoading(false);
+			}
+		};
+		fetchApi();
+	}, [debounceValue]);
 	const showResult = () => setVisibleResult(true);
 	const hideResult = () => setVisibleResult(false);
 	const handleSubmit = e => {

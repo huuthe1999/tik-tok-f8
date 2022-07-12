@@ -9,7 +9,7 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import 'tippy.js/dist/tippy.css';
 import styles from './Header.module.scss';
-import Search from './Search/Search';
+import Search from './Search';
 const cx = classNames.bind(styles);
 const Header = () => {
 	const isAuth = true;
