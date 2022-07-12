@@ -11,6 +11,7 @@ const DropdownItem = ({
 	className,
 	isMenuItem = false,
 	isMenuHeader = false,
+	separator = false,
 	onBack,
 	onClick,
 	...restProps
@@ -27,7 +28,7 @@ const DropdownItem = ({
 		props.href = href;
 		Component = 'a';
 	}
-
+	console.log(restProps);
 	const [headerHeight, setHeaderHeight] = useState(null);
 	const headerRef = useRef(null);
 
@@ -42,6 +43,7 @@ const DropdownItem = ({
 			className={cx('wrapper', {
 				'wrapper-menu': isMenuItem,
 				'wrapper-header': isMenuHeader,
+				separator,
 				[className]: className,
 			})}
 			{...props}>

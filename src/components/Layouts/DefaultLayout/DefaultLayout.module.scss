@@ -5,8 +5,10 @@
 }
 .container {
 	width: var(--default-layout-width);
+	margin-top: var(--default-layout-header-height);
 	display: flex;
 	min-height: calc(100vh - 60px);
+	height: 2000px;
 }
 .content {
 	flex: 1;

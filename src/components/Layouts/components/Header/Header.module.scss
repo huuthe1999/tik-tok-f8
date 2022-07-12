@@ -1,17 +1,19 @@
 @mixin rgba-color($alpha: 1, $property: background-color) {
 	#{$property}: rgba(22, 24, 35, $alpha);
 }
-$width-search: 364px;
 
 .wrapper {
 	position: relative;
 	height: var(--default-layout-header-height);
 	width: 100%;
 	box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+	position: fixed;
+	z-index: 999;
+	background-color: var(--color-white);
 }
 .inner {
 	height: 100%;
-	padding: 0 24px 0px 16px;
+	padding: 0 24px 0px 20px;
 	width: var(--default-layout-width);
 	margin: 0 auto;
 	display: flex;
@@ -20,8 +22,6 @@ $width-search: 364px;
 }
 
 .action {
-	position: relative;
-	left: -4px;
 	display: flex;
 	align-items: center;
 	&-icon-more {

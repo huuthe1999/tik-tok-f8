@@ -81,8 +81,9 @@ const Search = () => {
 						value={searchValue}
 						onChange={e => {
 							const value = e.target.value;
-							if (value.startsWith(' ')) return;
-							return setSearchValue(e.target.value);
+							if (!value.startsWith(' ')) {
+								return setSearchValue(e.target.value);
+							}
 						}}
 						onFocus={showResult}
 						className={cx('input')}
@@ -102,7 +103,12 @@ const Search = () => {
 						</div>
 					)}
 					<span className={cx('splitter')}></span>
-					<button className={cx('button')}>
+					<button
+						className={cx('button')}
+						onMouseDown={e => {
+							e.preventDefault();
+							inputRef.current?.blur();
+						}}>
 						<ion-icon name='search'></ion-icon>
 					</button>
 				</form>

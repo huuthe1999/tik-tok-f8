@@ -25,6 +25,20 @@ const MENUS = [
 				},
 				{ code: 'en', content: 'Tiếng Anh' },
 				{ code: 'jp', content: 'Tiếng Nhật' },
+				{ code: 'en', content: 'Tiếng Anh' },
+				{ code: 'jp', content: 'Tiếng Nhật' },
+				{ code: 'en', content: 'Tiếng Anh' },
+				{ code: 'jp', content: 'Tiếng Nhật' },
+				{ code: 'en', content: 'Tiếng Anh' },
+				{ code: 'jp', content: 'Tiếng Nhật' },
+				{ code: 'en', content: 'Tiếng Anh' },
+				{ code: 'jp', content: 'Tiếng Nhật' },
+				{ code: 'en', content: 'Tiếng Anh' },
+				{ code: 'jp', content: 'Tiếng Nhật' },
+				{ code: 'en', content: 'Tiếng Anh' },
+				{ code: 'jp', content: 'Tiếng Nhật' },
+				{ code: 'en', content: 'Tiếng Anh' },
+				{ code: 'jp', content: 'Tiếng Nhật' },
 			],
 		},
 	},
@@ -41,7 +55,12 @@ const AuthMenus = [
 	{ icon: 'logo-tiktok', content: 'Nhận xu', to: '/coin' },
 	{ icon: 'settings-outline', content: 'Cài đặt', to: '/setting' },
 	...MENUS,
-	{ icon: 'log-out-outline', content: 'Đăng xuất', to: '/logout' },
+	{
+		icon: 'log-out-outline',
+		content: 'Đăng xuất',
+		to: '/logout',
+		separator: true,
+	},
 ];
 // Menu consist of components like : Button, Icon, Component, ....
 const Menu = ({ children, isAuth }) => {
@@ -57,14 +76,15 @@ const Menu = ({ children, isAuth }) => {
 		<Tippy
 			interactive
 			placement='bottom-end'
+			visible
 			delay={[0, 400]}
-			offset={[12, 8]}
+			offset={[6, 8]}
 			trigger='mouseenter click focus'
 			onHide={() => setMenuList(prev => prev.slice(0, 1))}
 			render={attrs => (
 				<div
 					className={cx('wrapper', {
-						'log-out': isAuth,
+						header: menuList.length > 1,
 					})}
 					tabIndex={-1}
 					{...attrs}>
@@ -79,26 +99,28 @@ const Menu = ({ children, isAuth }) => {
 							}
 						/>
 					)}
-					{currentMenu.data.map((item, i) => {
-						const isParentMenu = !!item.children;
-						return (
-							<DropdownItem
-								key={i}
-								isMenuItem
-								onClick={() => {
-									if (isParentMenu) {
-										setMenuList(prev => [
-											...prev,
-											item.children,
-										]);
-									} else {
-										handleChange();
-									}
-								}}
-								{...item}
-							/>
-						);
-					})}
+					<div className={cx('wrapper-list')}>
+						{currentMenu.data.map((item, i) => {
+							const isParentMenu = !!item.children;
+							return (
+								<DropdownItem
+									key={i}
+									isMenuItem
+									onClick={() => {
+										if (isParentMenu) {
+											setMenuList(prev => [
+												...prev,
+												item.children,
+											]);
+										} else {
+											handleChange();
+										}
+									}}
+									{...item}
+								/>
+							);
+						})}
+					</div>
 				</div>
 			)}>
 			{children}

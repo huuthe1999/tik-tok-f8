@@ -1,7 +1,7 @@
 @mixin rgba-color($alpha: 1, $property: background-color) {
 	#{$property}: rgba(22, 24, 35, $alpha);
 }
-$width-search: 364px;
+$width-search: 361px;
 
 .wrapper {
 	@include rgba-color(0.06);
@@ -13,9 +13,9 @@ $width-search: 364px;
 	border-radius: 92px;
 	padding: 12px 16px;
 	overflow: hidden;
-	border: 1.5px solid transparent;
+	outline: 1.5px solid transparent;
 	&:focus-within {
-		@include rgba-color(0.2, border-color);
+		@include rgba-color(0.2, outline-color);
 	}
 }
 .form {
@@ -34,7 +34,7 @@ $width-search: 364px;
 	border: none;
 	background: transparent;
 	flex: 1;
-	width: 252px;
+	font-family: 'ProximaNova', sans-serif;
 	font-size: 1.6rem;
 	font-weight: 400;
 	line-height: 22px;
@@ -72,7 +72,8 @@ $width-search: 364px;
 .splitter {
 	@include rgba-color(0.12);
 	width: 1px;
-	height: 22px;
+	height: 28px;
+	margin: -3px 0;
 }
 .button {
 	padding: 11px 16px 11px 12px;

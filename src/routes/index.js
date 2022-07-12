@@ -1,24 +1,24 @@
 import { DefaultLayout } from '@/components/Layouts';
+import ROUTES from '@/configs/Routes';
 import Following from '@/pages/Following';
 import Home from '@/pages/Home';
 import Profile from '@/pages/Profile';
-
 const publicRoutes = [
 	{
-		path: '/*',
+		path: ROUTES.HOME_BASE,
 		element: <DefaultLayout />,
 		children: [
 			{ index: true, element: <Home /> },
 			{
-				path: '@:nickname',
+				path: ROUTES.PROFILE,
 				element: <Profile />,
 			},
 			{
-				path: 'following',
+				path: ROUTES.FOLLOWING,
 				element: <Following />,
-				children: [{ path: 'me', element: <div>Me</div> }],
+				children: [{ path: ROUTES.ME, element: <div>Me</div> }],
 			},
-			{ path: '*', element: <div>404</div> },
+			{ path: ROUTES.NOTFOUND, element: <div>404</div> },
 		],
 	},
 ];

@@ -3,6 +3,7 @@ import Button from '@/components/Button';
 
 import { Menu as PopperMenu } from '@/components/Popper';
 import TippySingleTon from '@/components/Popper/TippySingleTon';
+import ROUTES from '@/configs/Routes';
 import Tippy from '@tippyjs/react';
 
 import classNames from 'classnames/bind';
@@ -16,12 +17,15 @@ const Header = () => {
 	return (
 		<header className={cx('wrapper')}>
 			<div className={cx('inner')}>
-				<Link to='/'>
+				<Link to={ROUTES.HOME}>
 					<LogoIcon />
 				</Link>
 				<Search />
 				<div className={cx('action')}>
-					<Button to='/upload' secondary icon='cloud-upload-outline'>
+					<Button
+						to={ROUTES.UPLOAD}
+						secondary
+						icon='cloud-upload-outline'>
 						Tải lên
 					</Button>
 					{isAuth ? (
@@ -29,7 +33,7 @@ const Header = () => {
 							<TippySingleTon>
 								<Tippy placement='bottom' content='Tin nhắn'>
 									<Button
-										to='/messages'
+										to={ROUTES.MESSAGES}
 										iconBtn
 										badge={9}
 										icon='paper-plane-outline'></Button>

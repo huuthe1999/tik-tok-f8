@@ -10,15 +10,11 @@
 	transition: opacity 300ms ease 0s;
 	border-radius: 8px;
 
-	// &::after {
-	// 	content: '';
-	// 	position: absolute;
-	// 	width: 4px;
-	// 	height: 4px;
-	// 	background-color: var(--color-primary);
-	// }
-
-	&.log-out > *:last-child {
-		border-top: 1px solid rgba(22, 24, 35, 0.12);
+	&.header {
+		padding: 0;
+	}
+	&-list {
+		max-height: 590px;
+		overflow-y: auto;
 	}
 }
