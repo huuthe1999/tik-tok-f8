@@ -1,6 +1,7 @@
 import { DropdownItem } from '@/components/DropdownItem';
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import styles from './Menu.module.scss';
 const cx = classNames.bind(styles);
@@ -113,4 +114,8 @@ const Menu = ({ children, isAuth }) => {
 	);
 };
 
+Menu.propTypes = {
+	children: PropTypes.node,
+	isAuth: PropTypes.bool,
+};
 export default Menu;

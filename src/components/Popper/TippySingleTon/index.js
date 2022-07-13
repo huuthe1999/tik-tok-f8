@@ -1,4 +1,5 @@
 import Tippy, { useSingleton } from '@tippyjs/react';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const TippySingleTon = ({ children }) => {
@@ -26,4 +27,7 @@ const TippySingleTon = ({ children }) => {
 	);
 };
 
+TippySingleTon.propTypes = {
+	children: PropTypes.node,
+};
 export default TippySingleTon;

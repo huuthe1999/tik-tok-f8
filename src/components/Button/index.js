@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Button.module.scss';
@@ -52,5 +53,18 @@ const Button = (
 		</Component>
 	);
 };
-
+Button.prototype = {
+	primary: PropTypes.bool,
+	secondary: PropTypes.bool,
+	to: PropTypes.string,
+	href: PropTypes.string,
+	icon: PropTypes.string,
+	outline: PropTypes.bool,
+	rounded: PropTypes.bool,
+	iconBtn: PropTypes.bool,
+	badge: PropTypes.number,
+	onClick: PropTypes.func,
+	children: PropTypes.node,
+	className: PropTypes.string,
+};
 export default React.forwardRef(Button);

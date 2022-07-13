@@ -7,9 +7,11 @@ import * as searchService from '@/services/api/searchService';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
+
 import 'tippy.js/dist/tippy.css';
 import styles from './Search.module.scss';
 const cx = classNames.bind(styles);
+
 const Search = () => {
 	const [searchResult, setSearchResult] = useState([]);
 	const [searchValue, setSearchValue] = useState('');

@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './AccountItem.module.scss';
 const cx = classNames.bind(styles);
@@ -26,4 +27,7 @@ const AccountItem = ({ user }) => {
 	);
 };
 
+AccountItem.propTypes = {
+	user: PropTypes.object.isRequired,
+};
 export default AccountItem;

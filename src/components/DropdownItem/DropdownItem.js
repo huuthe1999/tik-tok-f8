@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Dropdown.module.scss';
@@ -73,4 +74,16 @@ const DropdownItem = ({
 	);
 };
 
+DropdownItem.propTypes = {
+	icon: PropTypes.string,
+	href: PropTypes.string,
+	content: PropTypes.string.isRequired,
+	to: PropTypes.string,
+	className: PropTypes.string,
+	isMenuItem: PropTypes.bool,
+	isMenuHeader: PropTypes.bool,
+	separator: PropTypes.bool,
+	onBack: PropTypes.func,
+	onClick: PropTypes.func,
+};
 export default DropdownItem;
