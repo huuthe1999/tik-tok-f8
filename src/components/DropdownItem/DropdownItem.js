@@ -16,7 +16,7 @@ const DropdownItem = ({
 	onClick,
 	...restProps
 }) => {
-	let Component = 'div';
+	let Component = isMenuHeader ? 'header' : 'div';
 	const props = {
 		onClick,
 		...restProps,
@@ -28,7 +28,7 @@ const DropdownItem = ({
 		props.href = href;
 		Component = 'a';
 	}
-	console.log(restProps);
+
 	const [headerHeight, setHeaderHeight] = useState(null);
 	const headerRef = useRef(null);
 

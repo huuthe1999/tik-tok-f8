@@ -25,20 +25,6 @@ const MENUS = [
 				},
 				{ code: 'en', content: 'Tiếng Anh' },
 				{ code: 'jp', content: 'Tiếng Nhật' },
-				{ code: 'en', content: 'Tiếng Anh' },
-				{ code: 'jp', content: 'Tiếng Nhật' },
-				{ code: 'en', content: 'Tiếng Anh' },
-				{ code: 'jp', content: 'Tiếng Nhật' },
-				{ code: 'en', content: 'Tiếng Anh' },
-				{ code: 'jp', content: 'Tiếng Nhật' },
-				{ code: 'en', content: 'Tiếng Anh' },
-				{ code: 'jp', content: 'Tiếng Nhật' },
-				{ code: 'en', content: 'Tiếng Anh' },
-				{ code: 'jp', content: 'Tiếng Nhật' },
-				{ code: 'en', content: 'Tiếng Anh' },
-				{ code: 'jp', content: 'Tiếng Nhật' },
-				{ code: 'en', content: 'Tiếng Anh' },
-				{ code: 'jp', content: 'Tiếng Nhật' },
 			],
 		},
 	},
@@ -76,7 +62,6 @@ const Menu = ({ children, isAuth }) => {
 		<Tippy
 			interactive
 			placement='bottom-end'
-			visible
 			delay={[0, 400]}
 			offset={[6, 8]}
 			trigger='mouseenter click focus'

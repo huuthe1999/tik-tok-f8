@@ -1,5 +1,5 @@
-import { DefaultLayout } from '@/components/Layouts';
 import ROUTES from '@/configs/Routes';
+import DefaultLayout from '@/layouts';
 import Following from '@/pages/Following';
 import Home from '@/pages/Home';
 import Profile from '@/pages/Profile';
