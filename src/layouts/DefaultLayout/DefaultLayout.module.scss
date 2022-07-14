@@ -4,11 +4,26 @@
 	align-items: center;
 }
 .container {
-	width: var(--default-layout-width);
+	max-width: var(--default-layout-width);
 	margin-top: var(--default-layout-header-height);
 	display: flex;
-	min-height: calc(100vh - 60px);
-	height: 2000px;
+	width: 100vw;
+	min-height: calc(100vh - var(--default-layout-header-height));
+
+	& > .sidebar {
+		top: calc(var(--default-layout-header-height) + 1px);
+		bottom: 0;
+		width: var(--sidebar-width);
+		padding-right: 8px;
+		overflow: hidden auto;
+		overscroll-behavior-y: contain;
+		perspective: 1px;
+		transform-style: preserve-3d;
+		perspective-origin: right top;
+		background: rgba(255, 255, 255, 1);
+		position: fixed;
+		z-index: 999;
+	}
 }
 .content {
 	flex: 1;

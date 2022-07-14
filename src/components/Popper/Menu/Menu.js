@@ -59,6 +59,12 @@ const Menu = ({ children, isAuth }) => {
 	const handleChange = () => {
 		console.log('handleChange');
 	};
+	const handleResetMenu = () => {
+		setMenuList(prev => prev.slice(0, prev.length - 1));
+	};
+	const handleAddMenu = item => {
+		setMenuList(prev => [...prev, item.children]);
+	};
 	return (
 		<Tippy
 			interactive
@@ -78,11 +84,7 @@ const Menu = ({ children, isAuth }) => {
 						<DropdownItem
 							isMenuHeader
 							content={currentMenu.content}
-							onBack={() =>
-								setMenuList(prev =>
-									prev.slice(0, prev.length - 1),
-								)
-							}
+							onBack={handleResetMenu}
 						/>
 					)}
 					<div className={cx('wrapper-list')}>
@@ -94,10 +96,7 @@ const Menu = ({ children, isAuth }) => {
 									isMenuItem
 									onClick={() => {
 										if (isParentMenu) {
-											setMenuList(prev => [
-												...prev,
-												item.children,
-											]);
+											handleAddMenu(item);
 										} else {
 											handleChange();
 										}

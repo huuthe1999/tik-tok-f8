@@ -37,6 +37,7 @@
 	// Default layout
 	--default-layout-width: 1150px;
 	--default-layout-header-height: 60px;
+	--sidebar-width: 356px;
 }
 
 * {
@@ -61,14 +62,19 @@ button {
 	cursor: pointer;
 	user-select: none;
 }
-a[href] {
+a {
 	text-decoration: none;
 	color: var(--text-color);
 	cursor: pointer;
 }
-a[href]:visited {
+a:visited {
 	color: rgba(22, 24, 35, 1);
 }
+
+//Active color
+// a[aria-current='page'] {
+// 	color: var(--color-primary);
+// }
 
 ion-icon:before {
 	content: '';
@@ -117,4 +123,8 @@ html *::-webkit-scrollbar-thumb {
 html *::-webkit-scrollbar-track {
 	border-radius: 0;
 	background-color: rgba(0, 0, 0, 0);
+}
+
+input::-webkit-input-placeholder {
+	min-height: 22px !important;
 }

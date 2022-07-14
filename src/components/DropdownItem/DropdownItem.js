@@ -1,15 +1,17 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styles from './Dropdown.module.scss';
 const cx = classNames.bind(styles);
 const DropdownItem = ({
 	icon,
+	iconComponent,
 	href,
 	content,
 	to,
 	className,
+	isNavItem = false,
 	isMenuItem = false,
 	isMenuHeader = false,
 	separator = false,
@@ -22,9 +24,13 @@ const DropdownItem = ({
 		onClick,
 		...restProps,
 	};
-	if (to) {
+	if (to || isNavItem) {
+		if (isNavItem) {
+			Component = NavLink;
+		} else {
+			Component = Link;
+		}
 		props.to = to;
-		Component = Link;
 	} else if (href) {
 		props.href = href;
 		Component = 'a';
@@ -40,15 +46,36 @@ const DropdownItem = ({
 	return (
 		<Component
 			onClick={onClick}
-			style={{ height: isMenuHeader ? headerHeight : null }}
-			className={cx('wrapper', {
-				'wrapper-menu': isMenuItem,
-				'wrapper-header': isMenuHeader,
-				separator,
-				[className]: className,
-			})}
+			style={{
+				height: isMenuHeader ? headerHeight : null,
+			}}
+			// end={isNavItem ? 'end' : null}
+			className={
+				isNavItem
+					? nav =>
+							cx('wrapper', {
+								'wrapper-menu': isMenuItem,
+								'wrapper-header': isMenuHeader,
+								active: nav.isActive ? true : false,
+								separator,
+								[className]: className,
+							})
+					: cx('wrapper', {
+							'wrapper-menu': isMenuItem,
+							'wrapper-header': isMenuHeader,
+							separator,
+							[className]: className,
+					  })
+			}
 			{...props}>
-			{icon || isMenuHeader ? (
+			{iconComponent ? (
+				<div
+					className={cx('wrapper-icon', {
+						'wrapper-menu-icon': isMenuItem,
+					})}>
+					{iconComponent}
+				</div>
+			) : icon || isMenuHeader ? (
 				<div
 					className={cx('wrapper-icon', {
 						'wrapper-menu-icon': isMenuItem,
@@ -76,6 +103,8 @@ const DropdownItem = ({
 
 DropdownItem.propTypes = {
 	icon: PropTypes.string,
+	iconComponent: PropTypes.element,
+	isNavItem: PropTypes.bool,
 	href: PropTypes.string,
 	content: PropTypes.string.isRequired,
 	to: PropTypes.string,

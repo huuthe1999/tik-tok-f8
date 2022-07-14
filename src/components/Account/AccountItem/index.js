@@ -4,14 +4,18 @@ import { Link } from 'react-router-dom';
 import styles from './AccountItem.module.scss';
 const cx = classNames.bind(styles);
 
-const AccountItem = ({ user }) => {
+const AccountItem = ({ user, isNavItem }) => {
 	return (
-		<Link to={`@${user.nickname}`} className={cx('wrapper')}>
+		<Link
+			to={`@${user.nickname}`}
+			className={cx('wrapper', {
+				'nav-item': isNavItem,
+			})}>
 			<span className={cx('avatar')}>
 				<img
 					src={
-						user.avatar ||
-						'https://i.picsum.photos/id/124/3504/2336.jpg?hmac=B1Avp6or9Df8vpnN4kQsGNfD66j8hH3gLtootCoTw4M'
+						user.avatar ??
+						'https://p16-sign-sg.tiktokcdn.com/aweme/720x720/tos-alisg-avt-0068/041325642c723a72ceb1e81a221468f6.jpeg?x-expires=1657983600&x-signature=YAv7XzlZI9TI%2BHApo66YxiHD9%2Fg%3D'
 					}
 					alt={user.full_name}
 				/>
@@ -29,5 +33,6 @@ const AccountItem = ({ user }) => {
 
 AccountItem.propTypes = {
 	user: PropTypes.object.isRequired,
+	isNavItem: PropTypes.bool,
 };
 export default AccountItem;

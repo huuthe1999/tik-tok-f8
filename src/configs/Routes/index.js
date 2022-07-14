@@ -3,6 +3,7 @@ const ROUTES = {
 	HOME: '/',
 	PROFILE: '@:nickname',
 	FOLLOWING: 'following',
+	LIVE: 'live',
 	ME: 'me',
 	SEARCH: 'search',
 	UPLOAD: 'upload',

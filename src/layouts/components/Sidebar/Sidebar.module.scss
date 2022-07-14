@@ -1,3 +1,15 @@
 .wrapper {
-	width: 356px;
+	padding: 20px 0 26px 8px;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	flex-shrink: 0;
+}
+.main {
+	margin-bottom: 8px;
+	padding: 0;
+}
+
+.footer {
+	// height: 40px;
 }
