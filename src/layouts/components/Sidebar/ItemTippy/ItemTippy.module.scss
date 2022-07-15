@@ -1,0 +1,90 @@
+.wrapper {
+	width: 320px;
+	padding: 20px;
+	background: rgb(255, 255, 255);
+	box-shadow: rgb(0 0 0 / 12%) 0px 4px 16px;
+	border-radius: 8px;
+}
+
+.header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 12px;
+
+	&-avatar {
+		display: block;
+		width: 44px;
+		flex: 0 0 44px;
+	}
+	&-avatarSpan {
+		font-size: 0px;
+		display: inline-block;
+		margin: 0px;
+		padding: 0px;
+		overflow: hidden;
+		color: rgb(255, 255, 255);
+		white-space: nowrap;
+		text-align: center;
+		vertical-align: middle;
+		border-radius: 50%;
+		background-color: rgba(136, 136, 136, 0.5);
+	}
+	&-avatarImg {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.button-follow {
+	min-width: 106px;
+	min-height: 28px;
+	font-size: 1.6rem;
+	line-height: 22px;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 4px 8px;
+	user-select: none;
+}
+
+.user-title {
+	font-weight: 700;
+	font-size: 1.8rem;
+	line-height: 22px;
+
+	& > ion-icon {
+		margin-left: 4px;
+		color: #20d5ec;
+		width: 14px;
+		height: 14px;
+	}
+}
+
+.user-name {
+	font-weight: 600;
+	font-size: 1.4rem;
+	line-height: 20px;
+}
+
+.user-follow-count,
+.user-like-count {
+	font-weight: 700;
+	margin-right: 6px;
+	font-size: 1.7rem;
+	line-height: 20px;
+	display: inline-block;
+}
+.user-follow,
+.user-like {
+	color: rgba(22, 24, 35, 0.75);
+	font-size: 1.7rem;
+	line-height: 20px;
+	display: inline-block;
+}
+.user-follow {
+	margin-right: 12px;
+}

@@ -1,5 +1,5 @@
 import { DropdownItem } from '@/components/DropdownItem';
-import Tippy from '@tippyjs/react/headless';
+import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
@@ -66,7 +66,7 @@ const Menu = ({ children, isAuth }) => {
 		setMenuList(prev => [...prev, item.children]);
 	};
 	return (
-		<Tippy
+		<HeadlessTippy
 			interactive
 			placement='bottom-end'
 			delay={[0, 400]}
@@ -109,7 +109,7 @@ const Menu = ({ children, isAuth }) => {
 				</div>
 			)}>
 			{children}
-		</Tippy>
+		</HeadlessTippy>
 	);
 };
 

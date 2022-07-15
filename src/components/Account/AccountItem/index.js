@@ -1,13 +1,15 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
+import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './AccountItem.module.scss';
 const cx = classNames.bind(styles);
 
-const AccountItem = ({ user, isNavItem }) => {
+const AccountItem = forwardRef(({ user, isNavItem }, ref) => {
 	return (
 		<Link
 			to={`@${user.nickname}`}
+			ref={ref}
 			className={cx('wrapper', {
 				'nav-item': isNavItem,
 			})}>
@@ -29,7 +31,7 @@ const AccountItem = ({ user, isNavItem }) => {
 			</div>
 		</Link>
 	);
-};
+});
 
 AccountItem.propTypes = {
 	user: PropTypes.object.isRequired,
