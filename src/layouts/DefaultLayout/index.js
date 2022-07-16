@@ -18,7 +18,9 @@ const DefaultLayout = () => {
 					</div>
 				)} */}
 				<aside className={cx('sidebar')}>
-					<Sidebar />
+					<div className={cx('sidebar-wrapper')}>
+						<Sidebar />
+					</div>
 				</aside>
 				<div className={cx('content')}>
 					<Outlet />

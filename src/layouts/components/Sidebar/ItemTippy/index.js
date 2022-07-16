@@ -10,8 +10,9 @@ const ItemTippy = ({ children }) => {
 		<HeadlessTippy
 			interactive
 			offset={[0, 8]}
-			delay={[800, 600]}
+			delay={[600, 0]}
 			placement='bottom-start'
+			zIndex={99}
 			render={attrs => (
 				<div className={cx('wrapper')} tabIndex={-1} {...attrs}>
 					<div className={cx('header')}>

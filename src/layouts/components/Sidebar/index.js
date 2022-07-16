@@ -141,7 +141,7 @@ const footerList = [
 		{
 			id: 5,
 			to: '/creators/creator-portal',
-			title: 'reator Portal',
+			title: 'Creator Portal',
 		},
 		{
 			id: 6,
