@@ -1,6 +1,8 @@
+import { fallbackAvatar, initialAvatar } from '@/assets/images';
 import Button from '@/components/Button';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
+import ReactImageFallback from 'react-image-fallback';
 import { Link } from 'react-router-dom';
 import styles from './ItemTippy.module.scss';
 const cx = classNames.bind(styles);
@@ -21,11 +23,18 @@ const ItemTippy = ({ children }) => {
 							target='_blank'
 							className={cx('header-avatar')}>
 							<span className={cx('header-avatarSpan')}>
-								<img
+								<ReactImageFallback
+									// src={user.avatar}
+									fallbackImage={fallbackAvatar}
+									initialImage={initialAvatar}
+									// alt={ user.full_name }
+									className={cx('header-avatarImg')}
+								/>
+								{/* <img
 									className={cx('header-avatarImg')}
 									src='https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/65d3c6b1d1e205c75536ccf1f26d552d~c5_100x100.jpeg?x-expires=1658034000&x-signature=YwFrhEmKMQCeULqu5jxOeRBLmjU%3D'
 									alt='No'
-								/>
+								/> */}
 							</span>
 						</Link>
 

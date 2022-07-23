@@ -39,9 +39,9 @@
 	&-header {
 		margin-right: var(--margin-right-header);
 	}
-	&-buttonFollow {
-		border: 1px solid var(--color-primary);
-		color: var(--color-primary);
+	&-button {
+		border: 1px solid rgba(22, 24, 35, 0.12);
+		color: var(--color-text);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -53,13 +53,22 @@
 		padding: 0 10px;
 
 		&:hover {
-			background-color: rgba(254, 44, 85, 0.06);
+			border-color: rgb(208, 209, 211);
+			background-color: rgb(248, 248, 248);
 		}
 
 		& > span {
 			font-size: 1.6rem;
 			line-height: 22px;
 			font-weight: 600;
+		}
+
+		&.follow {
+			border-color: var(--color-primary);
+			color: var(--color-primary);
+			&:hover {
+				background-color: rgba(254, 44, 85, 0.06);
+			}
 		}
 	}
 
@@ -95,17 +104,6 @@
 		display: flex;
 		flex-direction: row;
 		align-items: flex-end;
-	}
-
-	&-video {
-		position: relative;
-		background: #eee center no-repeat;
-		background-size: cover;
-		cursor: pointer;
-		border-radius: 8px;
-		overflow: hidden;
-		margin-right: 20px;
-		height: 600px;
 	}
 
 	&-videoAction {
@@ -190,6 +188,20 @@
 			flex-shrink: 0;
 			transform: translateY(4px);
 			margin-right: 5px;
+		}
+	}
+}
+
+// Responsive
+
+@media screen and (max-width: 767px) {
+	.content {
+		&-videoButton {
+			&-icon {
+				width: 32px;
+				height: 32px;
+				padding: 6px;
+			}
 		}
 	}
 }

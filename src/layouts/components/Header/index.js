@@ -6,6 +6,7 @@ import TippySingleTon from '@/components/Popper/TippySingleTon';
 import ROUTES from '@/configs/Routes';
 import Tippy from '@tippyjs/react';
 
+import { fallbackAvatar } from '@/assets/images';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import 'tippy.js/dist/tippy.css';
@@ -51,7 +52,7 @@ const Header = () => {
 									className={cx('avatar')}
 									style={{
 										padding: 0,
-										backgroundImage: `url('https://yt3.ggpht.com/yti/APfAmoE1RN7U6uN0WBh-adwCdakQDrQ6n2LVOiPm0w=s88-c-k-c0x00ffffff-no-rj-mo')`,
+										backgroundImage: `url(${fallbackAvatar})`,
 									}}></Button>
 							</PopperMenu>
 						</>

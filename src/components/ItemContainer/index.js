@@ -1,27 +1,54 @@
 import { HeartIcon, MessageIcon, MusicIcon, ShareIcon } from '@/assets/icons';
+import { fallbackAvatar, initialAvatar } from '@/assets/images';
 import Button from '@/components/Button';
+import VideoItem from '@/components/VideoItem';
 import convertNumber from '@/utils/formatNumber';
 import classNames from 'classnames/bind';
+import { useState } from 'react';
+import ReactImageFallback from 'react-image-fallback';
 import { Link } from 'react-router-dom';
 import styles from './ItemContainer.module.scss';
 const cx = classNames.bind(styles);
 const ItemContainer = () => {
+	const [followActive, setFollowActive] = useState(true);
+
+	const handleFollow = () => {
+		setFollowActive(!followActive);
+	};
 	return (
 		<div className={cx('wrapper')}>
 			<Link to={'/@hoaa'} className={cx('avatar')}>
 				<div className={cx('avatar-content')}>
-					<img
-						src='https://yt3.ggpht.com/yti/APfAmoE1RN7U6uN0WBh-adwCdakQDrQ6n2LVOiPm0w=s88-c-k-c0x00ffffff-no-rj-mo'
-						alt='No'
+					<ReactImageFallback
+						// src={}
+						initialTimeout={1000}
+						fallbackImage={fallbackAvatar}
+						initialImage={initialAvatar}
+						// alt={user.full_name}
 					/>
+					{/* <img src={defaultAvatar} alt='No' /> */}
 				</div>
 			</Link>
 
 			<div className={cx('content')}>
 				<div className={cx('content-header')}>
-					<Button className={cx('content-buttonFollow')}>
-						Follow
-					</Button>
+					{followActive ? (
+						<Button
+							onClick={handleFollow}
+							className={cx('content-button', {
+								follow: true,
+							})}>
+							Follow
+						</Button>
+					) : (
+						<Button
+							onClick={handleFollow}
+							className={cx('content-button', {
+								unFollow: true,
+							})}>
+							Đang Follow
+						</Button>
+					)}
 
 					<div className={cx('content-author')}>
 						<Link to={'/'} className={cx('content-author-anchor')}>
@@ -60,7 +87,9 @@ const ItemContainer = () => {
 					</h4>
 				</div>
 				<div className={cx('content-body')}>
-					<div className={cx('content-video')}></div>
+					<div className={cx('content-video')}>
+						<VideoItem />
+					</div>
 					<div className={cx('content-videoAction')}>
 						<button className={cx('content-videoButton')}>
 							<span className={cx('content-videoButton-icon')}>
